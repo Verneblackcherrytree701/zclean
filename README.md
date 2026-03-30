@@ -13,6 +13,7 @@
 [![npm version](https://img.shields.io/npm/v/@thestackai/zclean?style=flat-square&color=blue)](https://www.npmjs.com/package/@thestackai/zclean)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green?style=flat-square)](https://opensource.org/licenses/MIT)
 [![Platform](https://img.shields.io/badge/platform-macOS%20%7C%20Linux%20%7C%20Windows-lightgrey?style=flat-square)](#)
+[![Mentioned in Awesome Claude Code Toolkit](https://awesome.re/mentioned-badge.svg)](https://github.com/rohitg00/awesome-claude-code-toolkit)
 
 </div>
 
