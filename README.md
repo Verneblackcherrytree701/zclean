@@ -1,3 +1,5 @@
+# zclean — Zombie Process Cleaner for AI Coding Tools
+
 <div align="center">
 
 <pre>
@@ -190,6 +192,8 @@ Adding a new process pattern? Edit `src/detector/patterns.js` and open a PR.
 MIT — see [LICENSE](LICENSE).
 
 ---
+
+# zclean — Zombie Process Cleaner for AI Coding Tools
 
 <div align="center">
 
