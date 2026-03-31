@@ -133,6 +133,37 @@ function pruneLogs(config) {
   fs.writeFileSync(LOG_FILE, kept.join('\n') + (kept.length ? '\n' : ''), 'utf-8');
 }
 
+/**
+ * Compute cumulative stats from history.jsonl.
+ * Returns { totalKilled, totalMemFreed, weekKilled, weekMemFreed, lastRun }.
+ */
+function getCumulativeStats() {
+  const logs = readLogs(10000);
+  const weekAgo = Date.now() - 7 * 24 * 60 * 60 * 1000;
+
+  let totalKilled = 0;
+  let totalMemFreed = 0;
+  let weekKilled = 0;
+  let weekMemFreed = 0;
+  let lastRun = null;
+
+  for (const entry of logs) {
+    if (entry.action === 'cleanup-summary') {
+      totalKilled += entry.killed || 0;
+      totalMemFreed += entry.totalMemFreed || 0;
+      if (!lastRun || entry.timestamp > lastRun) lastRun = entry.timestamp;
+
+      const ts = new Date(entry.timestamp).getTime();
+      if (ts >= weekAgo) {
+        weekKilled += entry.killed || 0;
+        weekMemFreed += entry.totalMemFreed || 0;
+      }
+    }
+  }
+
+  return { totalKilled, totalMemFreed, weekKilled, weekMemFreed, lastRun };
+}
+
 module.exports = {
   CONFIG_DIR,
   CONFIG_FILE,
@@ -146,4 +177,5 @@ module.exports = {
   readLogs,
   pruneLogs,
   ensureConfigDir,
+  getCumulativeStats,
 };

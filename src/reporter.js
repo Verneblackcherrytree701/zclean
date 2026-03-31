@@ -114,6 +114,13 @@ function reportKill(results) {
       console.log(`    ${c('green', 'KILLED')} PID ${String(p.pid).padStart(6)}  ${p.name.padEnd(16)}  ${formatBytes(p.mem).padStart(8)}`);
     }
     console.log(c('green', `\n  Memory freed: ${formatBytes(totalMem)}`));
+
+    // Show cumulative stats if available
+    if (results.cumulative) {
+      const s = results.cumulative;
+      console.log(c('gray', `  This week: ${s.weekKilled} cleaned, ${formatBytes(s.weekMemFreed)} freed`));
+      console.log(c('gray', `  All time:  ${s.totalKilled} cleaned, ${formatBytes(s.totalMemFreed)} freed`));
+    }
   }
 
   if (skipped.length > 0) {

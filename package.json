@@ -1,6 +1,6 @@
 {
   "name": "@thestackai/zclean",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Automatic zombie process cleaner for AI coding tools (Claude Code, Codex)",
   "bin": {
     "zclean": "./bin/zclean.js"
